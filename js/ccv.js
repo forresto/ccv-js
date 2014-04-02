@@ -15,20 +15,24 @@ var face = require('./face.js')
 
 var ccv = module.exports = exports = {
   pre : function (image) {
-    if (image.tagName.toLowerCase() == "img") {
-      var canvas = document.createElement("canvas");
-      var width = image.naturalWidth || image.width;
-      var height = image.naturalHeight || image.height;
+    var tagName = image.tagName.toLowerCase()
+    if (tagName === "canvas") {
+      return image;
+    }
+    if (tagName === "img" || tagName === "video") {
+      var width = image.naturalWidth || image.videoWidth || image.width;
+      var height = image.naturalHeight || image.videoHeight || image.height;
       if (!width || !height) {
         return false;
       }
+      var canvas = document.createElement("canvas");
       canvas.width = width;
       canvas.height = height;
       var ctx = canvas.getContext("2d");
       ctx.drawImage(image, 0, 0);
       return canvas;
     }
-    return image;
+    return false;
   },
   array_group : function (seq, gfunc) {
     var i, j;
@@ -105,7 +109,12 @@ var ccv = module.exports = exports = {
     return {"index" : idx, "cat" : class_idx};
   },
 
-  detect_objects : function (canvas, cascade, interval, min_neighbors) {
+  detect_objects : function (options) {
+    var canvas =  options.canvas;
+    var cascade = options.cascade || 'face';
+    var interval = options.interval || 5;
+    var min_neighbors = options.min_neighbors || 1;
+
     canvas = ccv.pre(canvas);
     if (!canvas) { return false; }
 
