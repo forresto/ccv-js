@@ -2,9 +2,9 @@
   "name": "ccv",
   "description": "CCV face detection",
   "repository": "forresto/ccv.js",
-  "main": "lib/ccv.js",
+  "main": "js/ccv.js",
   "scripts": [
-    "lib/ccv.js",
-    "lib/face.js"
+    "js/ccv.js",
+    "js/face.js"
   ]
 }
