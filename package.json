@@ -1,0 +1,24 @@
+{
+  "name": "ccv",
+  "version": "1.0.0",
+  "description": "CCV face detection from liuliu/ccv",
+  "main": "js/ccv.js",
+  "scripts": {
+    "test": "echo 'todo'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forresto/ccv-js.git"
+  },
+  "keywords": [
+    "ccv",
+    "face",
+    "detection"
+  ],
+  "author": "https://github.com/liuliu",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/forresto/ccv-js/issues"
+  },
+  "homepage": "https://github.com/forresto/ccv-js#readme"
+}
